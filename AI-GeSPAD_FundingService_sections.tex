@@ -1,0 +1,219 @@
+% =====================================================================
+%  AI-GeSPAD -- ALL UKRI FUNDING SERVICE SECTIONS (working draft)
+%  Call: UKRI Enabling AI Adoption Across Science and Engineering (EPSRC)
+%  Deadline 1 Dec 2026 16:00 | max GBP 250k FEC | <=12 months | start 26 Apr 2027
+%
+%  How to use: Sections 1,2,4-16 are text boxes or forms in the Funding
+%  Service; draft here, then paste in as plain text.  NO TABLES in text
+%  boxes (they cause rejection); references count toward word limits.
+%  Section 3 (Vision and Approach) is the separate PDF upload:
+%  AI-GeSPAD_VisionApproach.tex.
+%  Word limits are shown in each heading; check with:  python3 wordcount.py
+%  Red \tbc{} = must be completed or checked.
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[scaled=0.95]{helvet}\renewcommand\familydefault{\sfdefault}
+\usepackage{xcolor,enumitem,titlesec,microtype}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}
+\setlist{nosep}
+\titleformat{\section}{\large\bfseries\color{blue!45!black}}{}{0pt}{}
+\titleformat{\subsection}{\bfseries}{}{0pt}{}
+\newcommand{\tbc}[1]{\textcolor{red}{#1}}
+\newcommand{\req}[1]{\par\noindent\fcolorbox{gray}{gray!8}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{\footnotesize\textbf{Requirement:} #1}}\par\smallskip}
+\newcommand{\Xin}{Dr Xin Yi}
+\newcommand{\Cheng}{Dr Cheng Wang}
+
+\title{\bfseries AI-GeSPAD: AI-enabled design and robustness verification of waveguide-integrated Ge-on-Si single-photon avalanche diodes\\[4pt]\large UKRI Funding Service sections -- working draft}
+\author{\Xin{} (domain expert, IPaQS) \quad \& \quad \Cheng{} (AI expert, Robotics)\\ Heriot-Watt University}
+\date{Draft \today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+% =====================================================================
+\section{1. Summary (max 550 words)}
+\req{Plain English for public/policy readers; used to find assessors. Cover context, challenge, aims and objectives, and benefits. No confidential information.}
+%<WC:summary>
+Quantum technologies such as the quantum internet and photonic quantum computers carry information on single particles of light (photons), usually at the 1550 nanometre wavelength used by today's fibre-optic networks. Detecting these single photons reliably is essential, but the best current detectors either need cooling to a few degrees above absolute zero or are expensive and cannot be built with standard silicon chip technology. This limits how far, how cheaply and how sustainably quantum networks can scale.
+
+A promising alternative is a germanium-on-silicon single-photon avalanche diode (SPAD). In this detector, germanium absorbs the infrared photon and silicon amplifies the resulting tiny electrical signal into a measurable pulse. Such detectors can be made in silicon foundries and built directly into photonic chips by feeding light along an on-chip waveguide. However, no one has yet shown such a waveguide-integrated detector that is both efficient at 1550 nanometres and quiet enough (few false "dark" counts) at temperatures reachable without cryogenics. The difficulty is that the device's efficiency and noise depend on more than ten interacting design choices, including layer shapes, doping levels and electric fields. Each choice pulls performance in a different direction, and each computer simulation of the device takes minutes to hours. Conventional design methods can explore only a small part of the possibilities.
+
+AI-GeSPAD pairs a quantum-detector physicist (Dr Xin Yi) with an expert in trustworthy, safety-critical AI (Dr Cheng Wang) to test whether artificial intelligence can open up this design problem. We will:
+(1) build an automated, multi-level simulation pipeline calibrated against real detectors measured at Heriot-Watt;
+(2) use uncertainty-aware AI that learns directly from the simulated device structure (a graph neural network) and knows how confident it is, to search the design space efficiently and map the best possible trade-offs between efficiency and noise at 230 K, a temperature reachable without cryogenics;
+(3) adapt methods developed to find rare failure scenarios for self-driving cars so that a second AI "challenger" actively tries to break each AI-proposed design, searching the uncertainties in the physics models and operating conditions, including temperatures up to room temperature, and keeping only designs whose good performance survives what we do not know;
+(4) turn what the AI has learned into simple, physically meaningful design rules, and check the best designs independently with the most accurate simulations.
+
+The project will deliver a shortlist of robust detector designs ready for fabrication, new physical design rules, an open-source AI-assisted device-design toolkit and benchmark dataset, and a roadmap towards building and testing the detectors with the UK's Integrated Quantum Networks Hub.
+
+The benefits reach beyond one device. The toolkit gives UK researchers a reusable, trustworthy way to apply AI to semiconductor device design, including other infrared detectors, lasers and modulators. Telecom-wavelength detectors that are cheaper, chip-integrated and need no cryogenics would lower the cost and energy use of quantum networks and support the UK photonics and quantum supply chain. The project also builds a lasting collaboration between AI and quantum photonics researchers, in line with the UK's National Quantum Strategy, AI Opportunities Action Plan and AI for Science ambitions.
+%</WC:summary>
+
+% =====================================================================
+\section{2. Core team (form)}
+\req{One project lead only; others as project co-lead (UK), specialist, researcher co-lead, research and innovation associate, etc. Make the AI expert / domain expert pairing explicit.}
+\begin{itemize}
+\item \textbf{Project lead:} \tbc{[decide: Xin Yi (owns the domain challenge) or Cheng Wang]}. Heriot-Watt University.
+\item \textbf{Project co-lead (UK):} the other of the two.
+\item \textbf{Research and innovation associate:} PDRA, 12 months at 1.0 FTE, to be recruited (device simulation and machine learning).
+\item \textbf{Specialist (optional):} \tbc{[e.g. Prof Gerald Buller -- advisor on detector measurement and the IQN Hub link; or a Silvaco or fabrication expert]}.
+\end{itemize}
+
+% =====================================================================
+\section{3. Vision and Approach (PDF upload)}
+\req{Max 4 sides A4 + 1 workplan page; 11pt Arial-equivalent; margins at least 2 cm; single PDF of at most 8 MB named "<FS number> Vision and Approach".}
+See \texttt{AI-GeSPAD\_VisionApproach.tex}.
+
+% =====================================================================
+\section{4. Applicant and team capability to deliver (max 1,650 words: R4RI up to 1,150 + Additions up to 500)}
+\req{Use each R4RI heading once and cover the whole team. Additions are narrative context only (career breaks etc.), not extra achievements. References count.}
+%<WC:capability>
+\subsection*{Contributions to the generation of new ideas, tools, methodologies or knowledge}
+This team brings together two complementary skill sets that the call asks to be paired: deep knowledge of avalanche-detector physics, and AI methods built for situations where an AI answer must be trusted.
+
+Dr Xin Yi (domain expert) works on the physics of impact ionisation and avalanche breakdown in III--V and group-IV semiconductors, and on the design, simulation, fabrication and characterisation of APDs and SPADs. He has developed models for multiplication and excess noise in non-uniform electric fields (AIP Advances, 2026) and analysed electric-field and photocurrent distributions in Ge-on-Si SPADs (IEEE Trans. Electron Devices, 2025). He has also advanced AlInAsSb avalanche photodiodes for extended short-wave infrared detection (ACS Photonics, 2026). These provide the physics models, measured device data and validation expertise that AI-GeSPAD builds on. \tbc{[Xin: add 1--2 highlights, e.g. key result or invited talks.]}
+
+Dr Cheng Wang (AI expert) leads the RoboSafe lab at Heriot-Watt. His methods quantify and reduce uncertainty in simulation-based assessment (IEEE T-IV, 2020), identify previously unknown unsafe scenarios at runtime (Accident Analysis \& Prevention, 2024), and generate realistic, controllable scenarios with machine-learned behaviour models (HAD-Gen, 2025). He also co-authored a widely used systematic review of explainable AI for safe autonomous driving (IEEE T-ITS, 2024). He created the AD4CHE dataset, showing a record of releasing open, reusable data resources. These are exactly the tools AI-GeSPAD transfers: uncertainty-aware surrogates, rare-failure search and explainability. \tbc{[Cheng: citations or impact figures if helpful.]}
+
+\subsection*{The development of others and maintenance of effective working relationships}
+Dr Yi supervises \tbc{[N]} PhD students and research staff within Prof. Gerald Buller's single-photon group, and has long-running collaborations on Ge-on-Si devices with fabrication partners \tbc{[e.g. Glasgow]}. Dr Wang is Deputy Director of the CDT in Dependable and Deployable AI for Robotics (CDT-D2AIR) and supervises \tbc{[N]} PhD students through it and the SPADS CDT. His collaborations span academia (University of Edinburgh, TU Darmstadt, University of Bremen) and industry (DJI Automotive). The PDRA will be co-supervised, with a tailored development plan: cross-training in device physics and AI, leadership of the open-source release, and support towards an independent fellowship. The project builds a new cross-institute link between IPaQS and the Robotics group and National Robotarium.
+
+\subsection*{Contributions to the wider research and innovation community}
+Dr Wang is an Associate Editor of the IEEE Open Journal of Intelligent Transportation Systems and IEEE ERAS (2026--2028) and reviews for leading journals. \tbc{[Xin: committees, reviewing, conference organisation, IQN Hub roles.]} Both leads will contribute to the programme's annual workshop and distributed peer review. The project's open toolkit and dataset are designed to be reused by the UK quantum-detector community.
+
+\subsection*{Contributions to broader research or innovation users and audiences and towards wider societal benefit}
+Dr Yi's EPSRC Quantum Technology Career Development Fellowship targets next-generation quantum detectors for quantum communications and sensing, in close contact with the IQN Hub and its industrial partners. Dr Wang's Horizon Europe-funded work on realistic AV test simulators is pursued with vehicle manufacturers and was covered widely in the media. He was a finalist for the IET Rising Star award (2024). Both leads engage with the public through \tbc{[outreach examples]}.
+
+\subsection*{Additions (optional, up to 500 words)}
+\tbc{[Only narrative context, e.g. part-time working, career breaks, or the rationale for the lead / co-lead split. Delete if not needed.]}
+%</WC:capability>
+
+% =====================================================================
+\section{5. Project partners (form)}
+\req{Organisation, address, contact name and email, contribution type (direct or indirect) with GBP value. Partners must be integral.}
+\tbc{Candidates to approach now (letters take time):}
+\begin{itemize}
+\item \textbf{EPSRC Integrated Quantum Networks (IQN) Hub} -- end-user and route to fabrication and testing; in kind: access to device data and hub meetings. (Note: the Hub is led from HWU, so a letter may be treated as the host organisation. Consider a non-HWU hub partner node, or describe the Hub under environment instead.)
+\item \textbf{University of Glasgow (James Watt Nanofabrication Centre)} -- Ge-on-Si growth and fabrication know-how; in kind: process tolerances and data.
+\item \textbf{Silvaco} -- in kind: TCAD licences and technical support for the automation interface.
+\item \textbf{Industry end-user} \tbc{[e.g. a UK SPAD, LIDAR or quantum-communications company]} -- defines target specs and assesses manufacturability.
+\end{itemize}
+
+\section{6. Letters or emails of support}
+\req{One PDF, up to 2 A4 sides per partner, confirming commitment, value to the partner and the partner's added value. No letters from HWU. Box: "attachment supplied" or "N/A".}
+Attachment supplied. \tbc{[or N/A]}
+
+% =====================================================================
+\section{7. Facilities (max 250 words)}
+\req{Only facilities on the UKRI facility information list, with usage or cost and confirmation of agreement. Otherwise state none.}
+%<WC:facilities>
+This project does not require any facilities listed on the UKRI facility information list. Computation will use Heriot-Watt's institutional high-performance computing and existing Silvaco TCAD licences held by the Institute of Photonics and Quantum Sciences, which are costed or contributed as described in Resources and cost justification.
+%</WC:facilities>
+
+% =====================================================================
+\section{8. Resources and cost justification (max 1,000 words)}
+\req{Justify significant items: staff, travel, unusual consumables (compute, licences), facilities, exceptions. No line-by-line costs. Must match the Vision and Approach.}
+%<WC:resources>
+The total request is \tbc{GBP [xxx]k FEC} (at most GBP 250k) over 12 months from 26 April 2027. The resources are set at the minimum needed for an ambitious, exploratory 12-month study, and almost all direct cost is people.
+
+\textbf{Project lead and co-lead (\tbc{[10]\%} FTE each, 12 months).} Dr Yi will lead WP1 (simulation pipeline and calibration) and the physical validation of all AI outputs in WP4. Dr Wang will lead WP2 (graph surrogate and robust designer) and WP3 (the challenger that verifies the robustness of AI conclusions). Both co-supervise the PDRA, attend fortnightly joint meetings, and take part in the programme workshop and distributed peer review. This time is essential: the project's value depends on continuous dialogue between the AI and device-physics experts, so that AI suggestions are physically meaningful and physics questions are posed in a form AI can address.
+
+\textbf{Postdoctoral research associate (1.0 FTE, 12 months, \tbc{grade 7}).} One PDRA with experience in semiconductor device simulation and machine learning will carry out most of the technical work. This includes automating the TCAD workflow, building and training surrogate models, running the optimisation and falsification campaigns, and preparing the open-source release. A single full-time post, rather than several part-time ones, gives continuity across the tightly coupled work packages within a short project. Recruitment starts on notification of the award.
+
+\textbf{Computing and software (\tbc{GBP [x]k}).} Generating several thousand 2D and 3D TCAD simulations and training ensembles of graph neural networks on the simulation meshes needs substantial CPU time (TCAD) and GPU time (training). We request \tbc{[n]} core-hours on Heriot-Watt HPC at the institutional rate, together with \tbc{[a Silvaco licence extension or additional parallel licences, if needed]}. All AI software is open source (BoTorch, GPyTorch, SHAP, PySR), so no AI licence costs are requested. Compute use will be monitored and reported, including estimated energy use, as part of our responsible-research commitments.
+
+\textbf{Travel and subsistence (\tbc{GBP [x]k}).} This covers attendance by both leads and the PDRA at the annual programme workshop required by the call; one international conference to present results (for example IEEE IEDM, CLEO or NeurIPS AI for Science workshop); and two partner visits for fabrication planning (for example Glasgow).
+
+\textbf{Dissemination and data (\tbc{GBP [x]k}).} Gold open-access publication of two journal papers, and preparation, curation and long-term deposit of the simulation dataset and code (see Data management). We also cost a half-day hands-on tutorial on the toolkit for the UK quantum-detector community, run alongside an IQN Hub event.
+
+\textbf{Estates and indirect costs} follow Heriot-Watt's standard FEC rates. No equipment is requested.
+
+\textbf{Value for money.} For a modest investment, the project tests an AI capability that could shorten the design cycle of semiconductor quantum detectors. Each failed fabrication run costs tens of thousands of pounds and months of time. The outputs (robust designs, rules, an open toolkit and a fabrication roadmap) are designed to lever larger follow-on funding.
+%</WC:resources>
+
+% =====================================================================
+\section{9. Ethics and responsible research and innovation (RRI)}
+\req{Ethical and RRI considerations of the research area and project design; wider implications and benefit maximisation; management across the lifecycle; data legal and ethical issues and standards. Then answer the animal, human and GMO sub-questions.}
+%<WC:ethics>
+The project is computational and involves no human participants, personal data, animals or biological materials. Its main ethical and responsible-innovation considerations are dual use, the trustworthiness of AI-generated scientific claims, research integrity, and environmental cost. We will address these using the AREA framework (anticipate, reflect, engage, act) throughout the project.
+
+\textbf{Dual use and security.} Infrared single-photon detectors are used in quantum communications and also in LIDAR and imaging, including defence applications. We will work with Heriot-Watt's Trusted Research and export-control advisers before releasing designs or code. We will review the release of detailed device designs against UK strategic export-control lists, and share general methods and tools openly while keeping release-sensitive design specifics under controlled access if advised.
+
+\textbf{Trustworthy AI for science.} A key risk of AI in science is confident but wrong results. Our design embeds safeguards drawn from safety-critical AI: calibrated uncertainty on every prediction, adversarial falsification of candidate designs, independent blind validation with high-fidelity physics simulation, and explainable design rules checked by a domain expert. We will report negative results and the limits of the surrogate models transparently, and will not claim device performance that has not been validated by physics simulation (or, later, measurement).
+
+\textbf{Research integrity and openness.} All code, simulation inputs and outputs, and model versions will be recorded so that every result can be reproduced. Generative AI tools will not be used to produce scientific results, and any use in writing will follow UKRI policy and be acknowledged.
+
+\textbf{Environmental sustainability.} Large simulation and training campaigns use energy. Multi-fidelity active learning is chosen partly to minimise the number of expensive simulations. We will log compute hours and estimated energy use and report them in publications.
+
+\textbf{Equality, diversity and inclusion, and people.} The PDRA post will be advertised openly with flexible-working options, and the PDRA will receive structured career development and credit (for example lead authorship on the toolkit paper).
+
+\textbf{Data.} No personal or confidential data are involved. Partner-provided process data will be held under agreed confidentiality terms and shared only in anonymised or aggregated form, as set out in the Data management plan.
+
+Animals: No. \quad Human participation: No. \quad Genetically modified organisms: No.
+%</WC:ethics>
+
+\section{10. Animal involvement and 3Rs}
+This project does not involve animals.
+\section{11. Genetically modified organisms and biological risk}
+This project does not involve genetically modified organisms or genetic technologies.
+\section{12. Human participation in health-related research}
+This project does not involve human participants.
+
+% =====================================================================
+\section{13. Risk and reward (max 1,000 words)}
+\req{Why speculative, high-risk and high-reward; link to the AI Opportunities Action Plan, Industrial Strategy and AI for Science Strategy; why unsuitable for other UKRI schemes. References count.}
+%<WC:riskreward>
+\textbf{Why this is high risk.} AI-GeSPAD tests an unproven idea: that AI, coupled with physics simulation, can find semiconductor device designs that experienced device physicists have not found, in a space where success depends on rare, poorly understood effects. Several things could fail. Surrogate models may struggle with sharp transitions such as avalanche breakdown and tunnelling onset. Calibrating simulations to the few existing devices may leave large uncertainty. The target itself (efficient, low-noise 1550 nm single-photon detection in a waveguide-coupled Ge-on-Si device near room temperature) may be beyond what the physics allows. Transferring safety-validation methods from autonomous vehicles to semiconductor devices has, as far as we know, not been attempted before.
+
+\textbf{Why the reward is high.} If it succeeds, the project would provide the first credible, robustness-verified design route to CMOS-compatible, chip-integrated telecom single-photon detectors that work without cryogenics. That would be a step change for scalable quantum networks and photonic quantum computing, where detector cost, cooling and integration are key bottlenecks. The method is equally important: a trustworthy designer--challenger loop, in which one AI proposes and another tries to refute, could become a standard tool for semiconductor device research. It could shorten design cycles and reduce costly fabrication runs for detectors, lasers and modulators across the UK semiconductor and photonics sector.
+
+\textbf{Managing the risk.} Every stage produces useful outputs even if the headline target is not met. The calibrated simulation pipeline and dataset (month 4), the robust Pareto map of achievable trade-offs (month 9), and the failure-mechanism catalogue from the challenger each advance understanding. A clear demonstration that the target is physically infeasible would itself redirect the field's effort.
+
+\textbf{Alignment with national strategy.} The project directly implements the \emph{AI Opportunities Action Plan}'s ambition to accelerate scientific discovery with AI \tbc{[cite]}, and the \emph{AI for Science Strategy}'s focus on AI-enabled scientific workflows, data and skills \tbc{[cite]}. It supports the \emph{Modern Industrial Strategy}, where quantum and semiconductors sit within frontier industries such as digital and technologies and advanced manufacturing \tbc{[cite]}, and the \emph{National Quantum Strategy} and Quantum Missions on networks and computing \tbc{[cite]}.
+
+\textbf{Why not another UKRI scheme.} The work is too exploratory and too interdisciplinary for standard EPSRC responsive-mode panels. A quantum-device panel would see the AI as unproven, and an AI panel would see the device domain as outside its remit. It is too early for Innovate UK, as no validated design yet exists to commercialise. It is outside the IQN Hub's committed work programme, which focuses on established detector technologies. This call's explicit pairing of AI and domain experts, its 12-month exploratory format and its emphasis on feasibility evidence and roadmaps fit the project exactly.
+%</WC:riskreward>
+
+% =====================================================================
+\section{14. Nominate reviewers (max 200 words)}
+\req{Up to two core-team members: name, institution, email (as in core team), UKRI council. Not nominating anyone means rejection. Available Jan--Feb 2027.}
+%<WC:reviewers>
+1. Dr Xin Yi, Heriot-Watt University, \tbc{[x.yi@hw.ac.uk -- check]}, EPSRC.\\
+2. Dr Cheng Wang, Heriot-Watt University, cheng.wang@hw.ac.uk, EPSRC.
+%</WC:reviewers>
+\tbc{Note: nominating both reduces each reviewer's load from about 8 to about 4 applications. Both must meet the review deadlines, or the application is rejected.}
+
+% =====================================================================
+\section{15. Data management and sharing (max 1,500 words)}
+\req{A DMP compliant with the UKRI data sharing policy.}
+%<WC:dmp>
+\textbf{1. Data to be created.} (a) Simulation inputs and outputs: parameterised device descriptions, Silvaco TCAD input decks, and optical and electrical outputs (field profiles, absorption, breakdown probability, dark-count components, current--voltage curves) for an estimated \tbc{2,000--5,000} simulations across three fidelity levels (about \tbc{50--200} GB). (b) Derived datasets: tabulated design parameters and figures of merit (a benchmark dataset of under 1 GB). (c) Trained surrogate models, optimisation and falsification logs. (d) Software: the AI--TCAD framework (Python). (e) Existing measured device data from HWU Ge-on-Si SPADs, used for calibration (owned by HWU and covered by existing agreements).
+
+\textbf{2. Standards and metadata.} Data will be stored in open, documented formats (HDF5 or CSV for numerical data, JSON or YAML for configurations), with a README and data dictionary describing units, physical models, software versions and random seeds. Code will follow version control (Git), automated testing and semantic versioning. Datasets will follow the FAIR principles and carry DataCite metadata.
+
+\textbf{3. Storage, backup and security.} Active data will be held on Heriot-Watt's managed research storage and HPC file systems with institutional backup. Code will be held in a private institutional Git repository until release. Partner-provided confidential process information will be stored in access-controlled folders.
+
+\textbf{4. Sharing.} The benchmark dataset, representative simulation decks (subject to Silvaco licence terms on sharing input files), trained models and the framework code will be deposited in Heriot-Watt's research data repository and/or Zenodo with a DOI. Code will be released under an open licence (MIT or BSD) and data under CC BY 4.0. Data underpinning publications will be released no later than publication. Remaining data will be released within \tbc{6} months of the project's end. Any release of detailed device designs will first be checked by HWU's Trusted Research and export-control advisers (see Ethics). If restrictions apply, metadata will still be published and access will be managed on request.
+
+\textbf{5. Preservation.} Deposited data will be preserved for at least 10 years in line with Heriot-Watt and UKRI policy.
+
+\textbf{6. Responsibilities and resources.} The PDRA will manage day-to-day data curation. The project lead is accountable for compliance. Curation and deposit costs are included in Resources.
+%</WC:dmp>
+
+% =====================================================================
+\section{16. Trusted Research and Innovation (form questions)}
+\req{NSI Act sensitive areas; collaborators and collaboration methods; export control licence needed?}
+\tbc{Draft answers -- confirm with the HWU Trusted Research and export-control team before submission:}
+\begin{itemize}
+\item \textbf{NSI Act areas:} \emph{Quantum technologies} (quantum communications and sensing components) -- likely YES. Possibly also \emph{Advanced materials} or \emph{Computing hardware} (semiconductor devices). Check against the NSI Act notifiable-acquisition definitions.
+\item \textbf{Collaborators:} UK only (HWU; UK project partners \tbc{[list]}). No international co-leads.
+\item \textbf{Collaboration methods:} shared code repository, data exchange under agreements, workshops.
+\item \textbf{Export control:} the computational design method is likely not controlled. However, detailed designs and performance data for infrared single-photon detectors \emph{may} fall under UK dual-use controls (Category 6 sensors). We will seek advice before any international dissemination of detailed designs.
+\end{itemize}
+
+\end{document}
