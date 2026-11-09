@@ -96,17 +96,11 @@ Dr Yi's EPSRC Quantum Technology Career Development Fellowship targets next-gene
 % =====================================================================
 \section{5. Project partners (form)}
 \req{Organisation, address, contact name and email, contribution type (direct or indirect) with GBP value. Partners must be integral.}
-\tbc{Candidates to approach now (letters take time):}
-\begin{itemize}
-\item \textbf{EPSRC Integrated Quantum Networks (IQN) Hub} -- end-user and route to fabrication and testing; in kind: access to device data and hub meetings. (Note: the Hub is led from HWU, so a letter may be treated as the host organisation. Consider a non-HWU hub partner node, or describe the Hub under environment instead.)
-\item \textbf{University of Glasgow (James Watt Nanofabrication Centre)} -- Ge-on-Si growth and fabrication know-how; in kind: process tolerances and data.
-\item \textbf{Silvaco} -- in kind: TCAD licences and technical support for the automation interface.
-\item \textbf{Industry end-user} \tbc{[e.g. a UK SPAD, LIDAR or quantum-communications company]} -- defines target specs and assesses manufacturability.
-\end{itemize}
+No external project partners. The project uses Heriot-Watt's own facilities (EPS cleanroom, Silvaco TCAD licences in the Institute of Photonics and Quantum Sciences) and links to the Heriot-Watt-led EPSRC Integrated Quantum Networks Hub, which is not a formal project partner.
 
 \section{6. Letters or emails of support}
 \req{One PDF, up to 2 A4 sides per partner, confirming commitment, value to the partner and the partner's added value. No letters from HWU. Box: "attachment supplied" or "N/A".}
-Attachment supplied. \tbc{[or N/A]}
+N/A
 
 % =====================================================================
 \section{7. Facilities (max 250 words)}
@@ -121,19 +115,19 @@ This project does not require any facilities listed on the UKRI facility informa
 %<WC:resources>
 We request GBP 249,994 FEC (UKRI contribution GBP 199,995 at 80%) for 12 months from 26 April 2027. Almost all direct cost is people, and every item maps onto a work package (WP) in the Vision and Approach.
 
-\textbf{Project lead and co-lead (directly allocated, GBP 23,434 FEC).} Dr Yi leads WP1 (simulation pipeline, calibration) and the physical validation of all AI outputs. Dr Wang leads WP2 (surrogate and robust designer) and WP3 (challenger). Both co-supervise the PDRA, attend fortnightly joint meetings, and take part in the programme workshop and the distributed peer review. The project's value depends on continuous dialogue between AI and device physics, so this time is essential.
+\textbf{Project lead and co-lead (Dr Wang 20\% FTE, Dr Yi 15\% FTE, 12 months; directly allocated, GBP 23,434 FEC).} Dr Yi leads WP1 (simulation pipeline, calibration) and the physical validation of all AI outputs. Dr Wang leads WP2 (surrogate and robust designer) and WP3 (challenger). Both co-supervise the PDRA, attend fortnightly joint meetings, and take part in the programme workshop and the distributed peer review. The project's value depends on continuous dialogue between AI and device physics, so this time is essential.
 
-\textbf{PDRA, simulation and AI (1.0 FTE, 12 months, GBP 60,459).} One full-time researcher with experience in semiconductor device simulation and machine learning does most of the technical work: automation of the technology computer-aided design (TCAD) device simulations, surrogate models (GP baseline and graph network), the designer--challenger loop and the open-source release. A single full-time post gives continuity across tightly coupled WPs in a short project. Recruitment starts on notification of the award.
+\textbf{PDRA, simulation and AI (1.0 FTE, 12 months, GBP 60,459).} One full-time researcher with experience in semiconductor device simulation and machine learning does most of the technical work: automation of the technology computer-aided design (TCAD) device simulations, graph-neural-network surrogate models, the designer--challenger loop and the open-source release. A single full-time post gives continuity across tightly coupled WPs in a short project. Recruitment starts on notification of the award.
 
-\textbf{Cleanroom technician (GBP 27,707), cleanroom consumables (GBP 1,750), silicon wafers (GBP 1,000) and EPS cleanroom access (8 weeks, GBP 4,483).} In WP1 (task T1.3, months 2--5), the technician will fabricate simple silicon avalanche test diodes with the charge-sheet and multiplication doping used in the designs. These will be measured to calibrate the impact-ionisation and doping-activation parameters in WP1, giving the simulator independent experimental anchors and closing the sim-to-real gap that AI-generated designs must not exploit. Cleanroom access is costed at the facility's published UKRI rate.
+\textbf{Cleanroom technician (GBP 27,707), cleanroom consumables (GBP 1,750), silicon wafers (GBP 1,000) and EPS cleanroom access (8 weeks, GBP 4,483).} In WP4 (task T4.3, months 9--12), the technician will fabricate simple silicon avalanche test diodes with the multiplication and charge-sheet doping of the top AI-generated designs. Their measured breakdown and gain will be compared with the predictions, giving an independent experimental validation of the AI--TCAD results before any full device is built. Cleanroom access is costed at the facility's published UKRI rate.
 
-\textbf{GPU workstation (GBP 13,000).} A dedicated multi-core workstation with a high-memory GPU is the project's single compute platform. It runs the parallel Silvaco TCAD simulations (about 3,000 2D and 300 3D runs), trains the GP and graph-neural-network surrogates, and runs the designer--challenger loop with fast turnaround, without queuing on shared facilities. It costs less than GBP 25,000 and will be used solely for this project.
+\textbf{GPU workstation (GBP 13,000).} A dedicated multi-core workstation with a high-memory GPU is the project's single compute platform. It runs the parallel Silvaco TCAD simulations (about 3,000 2D and 300 3D runs), trains the graph-neural-network surrogates, and runs the designer--challenger loop with fast turnaround, without queuing on shared facilities. It costs less than GBP 25,000 and will be used solely for this project.
 
 \textbf{Travel and subsistence (GBP 8,400).} GBP 2,400 covers three people (both leads and the PDRA) attending the annual programme workshop required by the call. GBP 6,000 covers two people presenting results at one leading international conference (for example CLEO or IEEE IEDM).
 
 \textbf{Research data management (GBP 750).} The Heriot-Watt Standard Tier Research Data Management Service provides 2 TB of backed-up storage, repository deposit and long-term preservation for the simulation dataset, trained models and code (see Data management).
 
-\textbf{Resources provided at no cost to the grant.} The existing Silvaco TCAD licences in the Institute of Photonics and Quantum Sciences, measured Ge-on-Si SPAD data from previous projects, and open-source AI software (BoTorch, GPyTorch, PyTorch Geometric).
+\textbf{Resources provided at no cost to the grant.} The existing Silvaco TCAD licences in the Institute of Photonics and Quantum Sciences, measured Ge-on-Si SPAD data from previous projects, and open-source AI software (BoTorch, PyTorch Geometric).
 
 \textbf{Estates, indirect and infrastructure technician costs} follow Heriot-Watt's standard FEC rates. No equipment item exceeds GBP 25,000, and no studentships are requested.
 
@@ -156,7 +150,7 @@ The project is computational and involves no human participants, personal data, 
 
 \textbf{Equality, diversity and inclusion, and people.} The PDRA post will be advertised openly with flexible-working options, and the PDRA will receive structured career development and credit (for example lead authorship on the toolkit paper).
 
-\textbf{Data.} No personal or confidential data are involved. Partner-provided process data will be held under agreed confidentiality terms and shared only in anonymised or aggregated form, as set out in the Data management plan.
+\textbf{Data.} No personal or confidential data are involved.
 
 Animals: No. \quad Human participation: No. \quad Genetically modified organisms: No.
 %</WC:ethics>
@@ -178,7 +172,7 @@ This project does not involve human participants.
 
 \textbf{Managing the risk.} Every stage produces useful outputs even if the headline target is not met. The calibrated simulation pipeline and dataset (month 4), the robust Pareto map of achievable trade-offs (month 9), and the failure-mechanism catalogue from the challenger each advance understanding. A clear demonstration that the target is physically infeasible would itself redirect the field's effort.
 
-\textbf{Alignment with national strategy.} The project directly implements the \emph{AI Opportunities Action Plan}'s ambition to accelerate scientific discovery with AI \tbc{[cite]}, and the \emph{AI for Science Strategy}'s focus on AI-enabled scientific workflows, data and skills \tbc{[cite]}. It supports the \emph{Modern Industrial Strategy}, where quantum and semiconductors sit within frontier industries such as digital and technologies and advanced manufacturing \tbc{[cite]}, and the \emph{National Quantum Strategy} and Quantum Missions on networks and computing \tbc{[cite]}.
+\textbf{Alignment with national strategy.} The project directly implements the \emph{AI Opportunities Action Plan}'s ambition to accelerate scientific discovery with AI (DSIT, January 2025), and the \emph{AI for Science Strategy}'s focus on AI-enabled scientific workflows, data and skills, in which quantum technologies are a named priority (DSIT, November 2025). It supports the \emph{Modern Industrial Strategy}, which prioritises frontier technologies including AI, quantum and semiconductors (HM Government, June 2025), and the \emph{National Quantum Strategy} and Quantum Missions on networks and computing (DSIT, 2023).
 
 \textbf{Why not another UKRI scheme.} The work is too exploratory and too interdisciplinary for standard EPSRC responsive-mode panels. A quantum-device panel would see the AI as unproven, and an AI panel would see the device domain as outside its remit. It is too early for Innovate UK, as no validated design yet exists to commercialise. It is outside the IQN Hub's committed work programme, which focuses on established detector technologies. This call's explicit pairing of AI and domain experts, its 12-month exploratory format and its emphasis on feasibility evidence and roadmaps fit the project exactly.
 %</WC:riskreward>
@@ -200,7 +194,7 @@ This project does not involve human participants.
 
 \textbf{2. Standards and metadata.} Data will be stored in open, documented formats (HDF5 or CSV for numerical data, JSON or YAML for configurations), with a README and data dictionary describing units, physical models, software versions and random seeds. Code will follow version control (Git), automated testing and semantic versioning. Datasets will follow the FAIR principles and carry DataCite metadata.
 
-\textbf{3. Storage, backup and security.} Active data will be held on Heriot-Watt's Standard Tier Research Data Management Service (2 TB on-premises storage with backup and disaster recovery), synchronised from the project workstation. Code will be held in a private institutional Git repository until release. Partner-provided confidential process information will be stored in access-controlled folders.
+\textbf{3. Storage, backup and security.} Active data will be held on Heriot-Watt's Standard Tier Research Data Management Service (2 TB on-premises storage with backup and disaster recovery), synchronised from the project workstation. Code will be held in a private institutional Git repository until release.
 
 \textbf{4. Sharing.} The benchmark dataset, representative simulation decks (subject to Silvaco licence terms on sharing input files), trained models and the framework code will be deposited in Heriot-Watt's research data repository and/or Zenodo with a DOI. Code will be released under an open licence (MIT or BSD) and data under CC BY 4.0. Data underpinning publications will be released no later than publication. Remaining data will be released within \tbc{6} months of the project's end. Any release of detailed device designs will first be checked by HWU's Trusted Research and export-control advisers (see Ethics). If restrictions apply, metadata will still be published and access will be managed on request.
 
@@ -215,8 +209,8 @@ This project does not involve human participants.
 \tbc{Draft answers -- confirm with the HWU Trusted Research and export-control team before submission:}
 \begin{itemize}
 \item \textbf{NSI Act areas:} \emph{Quantum technologies} (quantum communications and sensing components) -- likely YES. Possibly also \emph{Advanced materials} or \emph{Computing hardware} (semiconductor devices). Check against the NSI Act notifiable-acquisition definitions.
-\item \textbf{Collaborators:} UK only (HWU; UK project partners \tbc{[list]}). No international co-leads.
-\item \textbf{Collaboration methods:} shared code repository, data exchange under agreements, workshops.
+\item \textbf{Collaborators:} Heriot-Watt University only; no external project partners and no international co-leads.
+\item \textbf{Collaboration methods:} internal shared code repository and data storage at Heriot-Watt; dissemination through the programme workshop and an international conference.
 \item \textbf{Export control:} the computational design method is likely not controlled. However, detailed designs and performance data for infrared single-photon detectors \emph{may} fall under UK dual-use controls (Category 6 sensors). We will seek advice before any international dissemination of detailed designs.
 \end{itemize}
 
