@@ -43,12 +43,12 @@
 \pagestyle{plain}
 
 % ---------------- team macros (edit once) ----------------
-\newcommand{\Xin}{Dr Xin Yi}           % domain expert (SPAD device physics)
-\newcommand{\Cheng}{Dr Cheng Wang}     % AI expert (safe/trustworthy AI, scenario-based V\&V)
+\newcommand{\Xin}{Dr.~Xin Yi}           % domain expert (SPAD device physics)
+\newcommand{\Cheng}{Dr.~Cheng Wang}     % AI expert (safe/trustworthy AI, scenario-based V\&V)
 
 \begin{document}
 \begin{center}
-{\large\bfseries AI-GeSPAD: AI-enabled design and robustness verification of waveguide-integrated germanium-on-silicon single-photon avalanche diodes}\\[2pt]
+{\large\bfseries AI-GeSPAD: AI-Designed, Robust Germanium-on-Silicon Single-Photon Detectors}\\[2pt]
 %\small Vision and Approach \quad|\quad Priority area: Quantum technologies \quad|\quad 12 months from 26 April 2027
 \end{center}
 
@@ -58,7 +58,7 @@
 % timeliness; impact (research, society, economy, environment).
 
 \textbf{The domain challenge}
-Single-photon detection at the 1550\,nm telecommunications wavelength is a key enabling technology for the quantum internet, photonic quantum computing and long-range quantum-enhanced sensing. These are priority missions in the UK National Quantum Strategy~\cn{1}. The incumbent detectors each carry a major penalty. Superconducting nanowire detectors need cryogenics below about 3\,K. InGaAs/InP SPADs are expensive, are not CMOS-compatible and suffer from afterpulsing~\cn{2}. Germanium-on-silicon (Ge-on-Si) SPADs combine germanium's infrared absorption with silicon's low-noise avalanche multiplication, and they can be made in silicon foundries. Heriot-Watt has led their development, demonstrating planar Ge-on-Si SPADs with record efficiency at 1310\,nm~\cn{3,4}, and room-temperature Ge-Si SPAD operation has recently been reported internationally~\cn{5}. 
+Single-photon detection at the 1550\,nm telecommunications wavelength is a key enabling technology for the quantum internet, photonic quantum computing and long-range quantum-enhanced sensing. UK Quantum Mission 2 aims to deploy the world's most advanced quantum network at scale by 2035~\cn{1}, which needs low-cost, chip-integrated detectors. The incumbent detectors each carry a major penalty. Superconducting nanowire detectors need cryogenics below about 3\,K. InGaAs/InP SPADs are expensive, are not CMOS-compatible and suffer from afterpulsing~\cn{2}. Germanium-on-silicon (Ge-on-Si) SPADs combine germanium's infrared absorption with silicon's low-noise avalanche multiplication, and they can be made in silicon foundries. Heriot-Watt has led their development, demonstrating planar Ge-on-Si SPADs with record efficiency at 1310\,nm~\cn{3,4}, and room-temperature operation has since been reported~\cn{5}. 
 
 At 1550\,nm, however, germanium's absorption collapses near its band edge. A normal-incidence device would need a thick Ge layer, which raises dark counts. Waveguide integration decouples the optical absorption length (along the waveguide) from the electrical thickness of the device. This makes it the most credible route to high single-photon detection efficiency (SPDE) at 1550\,nm with a dark count rate (DCR) low enough at the near-room temperatures (230--295\,K) reachable with thermoelectric coolers. Designing such a device is the problem. SPDE and DCR are coupled through mode confinement, absorber geometry, the doping profile that shapes the internal field, avalanche breakdown in Si and tunnelling noise in Ge, and these couplings pull in opposite directions. A high Si field raises the breakdown probability but leaks into Ge and drives tunnelling. A longer absorber raises SPDE but also the thermal dark counts. With more than 10 coupled parameters and Silvaco technology computer-aided design (TCAD) simulations~\cn{13} taking minutes to hours each, one-parameter-at-a-time design explores only a small fraction of the space. A waveguide-coupled Ge-on-Si SPAD with useful 1550\,nm SPDE and low DCR at near-room temperature has not yet been convincingly demonstrated. 
 
@@ -73,7 +73,7 @@ where $n_\ell$ is the number of runs at fidelity $\ell$ and $B$ the simulation b
 \end{equation}
 where $\rho\ge0$ means the specification is met. The \emph{inner} minimisation asks, for a given design, how badly it could perform under the worst plausible physics and operating conditions; the \emph{outer} maximisation then searches for the design whose worst case is best. Conventional design solves neither the outer maximisation (too many expensive evaluations) nor the inner minimisation (it checks a few corner cases by hand).
 
-\textbf{The team pairing} The domain expert, Dr. Yi (SPAD device physics), owns the challenge and defines the uncertainty set $\Delta$ and the target specification, and judges whether AI-proposed designs are physically credible. The AI expert, Dr. Wang (trustworthy AI, simulation-based verification), brings designer--challenger methods proven in safety-critical systems, where AI conclusions must be trusted.
+\textbf{The team pairing} The domain expert, Dr.~Yi (SPAD device physics), owns the challenge and defines the uncertainty set $\Delta$ and the target specification, and judges whether AI-proposed designs are physically credible. The AI expert, Dr.~Wang (trustworthy AI, simulation-based verification), brings designer--challenger methods proven in safety-critical systems, where AI conclusions must be trusted.
 
 \subsection{Scientific advancement and applied innovation}
 AI-GeSPAD will establish a robust AI design loop for semiconductor quantum detectors in which two AI agents play the game in Eq.~(2), and every claim is checked by physics simulation (Fig.~1):
@@ -85,11 +85,11 @@ AI-GeSPAD will establish a robust AI design loop for semiconductor quantum detec
 
 
 \begin{figure}[t]\centering
-\includegraphics[width=\linewidth]{Fig1_AI-GeSPAD.pdf}
+\includegraphics[width=\linewidth]{figures/Fig1_AI-GeSPAD.pdf}
 \caption{\textbf{AI-GeSPAD framework.} The physics and data engine \ding{172} (WP1: automated TCAD and Bayesian calibration) provides training data and the uncertainty set $\Delta$. In WP2 \ding{173}, a graph surrogate predicts fields and figures of merit with uncertainty, and the designer and challenger play the robust design game in Eq.~(2); every candidate and top counterexample is re-simulated in TCAD. Robust designs are then explained and validated independently \ding{174} (WP3). The device cross-section and field map are the team's preliminary TCAD results; other plots are illustrative.}
 \end{figure}
 
-This is delivered through three objectives, one per work package. We will first build a calibrated, multi-fidelity simulation pipeline anchored to measured established devices, which also defines the uncertainty set $\Delta$ (\textbf{O1}). On this foundation, a graph-surrogate designer will map the robust SPDE--DCR Pareto front of Eq.~(1) at 230\,K, while a challenger verifies the robustness of the AI's conclusions against physics-model and operating uncertainty, as in Eq.~(2) (\textbf{O2}). Finally, the results will be distilled into interpretable design rules, validated independently, and released as an open AI--TCAD toolkit and benchmark with a fabrication roadmap (\textbf{O3}).
+This is delivered through three objectives, one per work package. We will first build a calibrated, multi-fidelity simulation pipeline anchored to measured devices, which also defines the uncertainty set $\Delta$ (\textbf{O1}). A graph-surrogate designer then will map the robust SPDE--DCR Pareto front of Eq.~(1) at 230\,K, while a challenger verifies the robustness of the AI's conclusions against physics-model and operating uncertainty, as in Eq.~(2) (\textbf{O2}). Finally, the results will be distilled into interpretable design rules, validated independently, and released as an open AI--TCAD toolkit and benchmark with a fabrication roadmap (\textbf{O3}).
 
 \textbf{Scientific advancement:} new understanding of how photonic confinement, electric-field engineering and avalanche noise interact; even a negative result has value, as the challenger shows \emph{where} the physics forbids the target. \textbf{Applied innovation:} a credible design for a CMOS-compatible, chip-integrated telecom single-photon detector, and a reusable, trustworthy AI design capability for semiconductor devices.
 
@@ -106,20 +106,20 @@ Three developments make this the right moment. \textbf{Device readiness:} Ge-on-
 % into outcomes; research environment.
 
 \subsection{The applicability of AI}
-Each method answers a feature of Eqs.~(1)--(2). \textbf{(i)} $\eta$ and $D$ are integrals of spatial fields on irregular meshes, with noise dominated by local hot spots. A graph neural network on the mesh matches this structure, and the final step is left to established avalanche physics. \textbf{(ii)} Each TCAD run is expensive and the simulation budget $B$ is fixed, so the AI must choose which simulations to run: uncertainty-aware active learning picks the most informative designs, and the surrogate learns mostly from cheap 2D runs before a few costly 3D runs. \textbf{(iii)} The objectives compete, which calls for multi-objective optimisation. \textbf{(iv)} The inner minimum is attained at rare corners of $\Delta$, which calls for adversarial falsification to find the worst case, rather than random TCAD sampling or a few hand-picked corner cases~\cn{6,7}. \textbf{(v)} Physicists must be able to interpret the AI results.
+Each method answers a feature of Eqs.~(1)--(2). \textbf{(i)} $\eta$ and $D$ are integrals of spatial fields on irregular meshes, with noise dominated by local hot spots. A graph neural network on the mesh matches this structure, and the final step is left to established avalanche physics. \textbf{(ii)} Each TCAD run is expensive and the simulation budget $B$ is fixed, so the AI must choose which simulations to run: uncertainty-aware active learning picks the most informative designs, and the surrogate learns mostly from cheap 2D runs before a few costly 3D runs. \textbf{(iii)} The objectives compete, which calls for multi-objective optimisation. \textbf{(iv)} The inner minimum lies at rare corners of $\Delta$, which calls for adversarial falsification to find the worst case rather than random TCAD sampling or hand-picked corners~\cn{6,7}. \textbf{(v)} Physicists must be able to interpret the AI results.
 
 \subsection{Methodology and work packages (Gantt chart on the workplan page)}
-\textbf{WP1 -- Physics and data engine: calibrated multi-fidelity simulation pipeline (M1--4).} Python scripts run Silvaco in parallel on the project workstation, in 2D and in 3D with an optical mode solver, over a device template including the waveguide and absorber geometry, the thickness and doping of the multiplication and charge-sheet layers, guard rings, bias and temperature. The output metrics are SPDE (absorption $\times$ breakdown probability), DCR (Shockley--Read--Hall, trap-assisted and band-to-band tunnelling) and breakdown voltage. \emph{Calibration:} the workflow is first benchmarked against published waveguide Ge/Si APDs~\cn{17,18}, then the impact-ionisation and defect parameters are fitted by Bayesian calibration to measured current--voltage, SPDE and DCR data from existing HWU Ge-on-Si SPADs~\cn{4,8}, with uncertainty carried forward. The posterior defines $\Delta$ and closes the sim-to-real gap.
-\emph{Deliverable D1:} automated pipeline and a seed dataset of 1000 mostly 2D simulations, exported as mesh graphs that store material, doping and field at each node.
+\textbf{WP1 -- Physics and data engine: calibrated multi-fidelity simulation pipeline (M1--4).} Python scripts run Silvaco in parallel on the project workstation, in 2D and in 3D with an optical mode solver, over a device template including the waveguide and absorber geometry, the thickness and doping of the multiplication and charge-sheet layers, guard rings, bias and temperature. The output metrics are SPDE (absorption $\times$ breakdown probability), DCR (Shockley--Read--Hall, trap-assisted and band-to-band tunnelling) and breakdown voltage. \emph{Calibration:} the workflow is first benchmarked against published waveguide Ge/Si APDs~\cn{17,18}, then the impact-ionisation and defect parameters are fitted by Bayesian calibration to existing HWU Ge-on-Si SPAD data~\cn{4,8} and to new 230--295\,K measurements by the project technician, with uncertainty carried forward. The posterior defines $\Delta$ and closes the sim-to-real gap.
+\emph{Deliverable D1:} automated pipeline and a seed dataset of 600 2D simulations, from a total budget of about 1,000 2D and 100 3D runs, exported as mesh graphs that store material, doping and field at each node.
 
-\textbf{WP2 -- Graph surrogate, robust designer and challenger (M3--10).} A mesh-based graph neural network (MeshGraphNet-type message passing) is trained to map device structure, bias and temperature to field, absorption and generation maps. A \emph{physics layer} then computes breakdown probability (McIntyre model and the team's non-uniform-field model~\cn{11}), SPDE and DCR components from those maps. This makes the predictions physically constrained and interpretable. We pre-train on cheap 2D runs and fine-tune on fewer 3D runs, so the multi-fidelity learning happens through transfer. A deep ensemble provides predictive uncertainty. Multi-objective Bayesian optimisation (expected hypervolume improvement) uses the ensemble to select the next simulation and its fidelity. Once the challenger (below) is running, the objective is replaced by its worst case over the counterexamples found so far, approximating the outer maximisation of Eq.~(1).
-Each shortlisted design $\mathbf{x}^*$ is treated as a system under test~\cn{7}. The challenger solves $\boldsymbol{\delta}^*=\arg\min_{\boldsymbol{\delta}\in\Delta}\rho(\mathbf{x}^*,\boldsymbol{\delta})$ by Bayesian-optimisation falsification on the surrogate, re-simulates the top 3--5 counterexamples per design in 2D TCAD, and estimates the failure probability $P_\mathrm{fail}=\Pr_{\boldsymbol{\delta}\sim\Delta}[\rho(\mathbf{x}^*,\boldsymbol{\delta})<0]$, the share of plausible conditions in which the design misses the specification, by Monte Carlo sampling of the cheap surrogate. It targets physics-model uncertainty ($\boldsymbol{\theta}$ from WP1), bias drift and surrogate error; confirmed counterexamples are labelled by mechanism (tunnelling, edge breakdown, efficiency loss) and fed back to the designer. The final 2--3 designs are checked across 250--295\,K for their maximum operating temperature. Reusing the surrogate keeps the challenger cheap.
+\textbf{WP2 -- Graph surrogate, robust designer and challenger (M3--10).} A mesh-based graph neural network (MeshGraphNet-type message passing) is trained to map device structure, bias and temperature to field, absorption and generation maps. A \emph{physics layer} then computes breakdown probability (McIntyre model and the team's non-uniform-field model~\cn{11}), SPDE and DCR components from those maps. This makes the predictions physically constrained and interpretable. We pre-train on cheap 2D runs and fine-tune on fewer 3D runs, so the multi-fidelity learning happens through transfer. A deep ensemble provides predictive uncertainty. Multi-objective Bayesian optimisation (expected hypervolume improvement) uses the ensemble to select the next simulation and its fidelity, and the device measurements that most reduce its uncertainty. Once the challenger (below) is running, the objective is replaced by its worst case over the counterexamples found so far, approximating the outer maximisation of Eq.~(1).
+Each shortlisted design $\mathbf{x}^*$ is treated as a system under test~\cn{7}. The challenger solves $\boldsymbol{\delta}^*=\arg\min_{\boldsymbol{\delta}\in\Delta}\rho(\mathbf{x}^*,\boldsymbol{\delta})$ by Bayesian-optimisation falsification on the surrogate, re-simulates the top 3--5 counterexamples per design in 2D TCAD, and estimates the failure probability $P_\mathrm{fail}=\Pr_{\boldsymbol{\delta}\sim\Delta}[\rho(\mathbf{x}^*,\boldsymbol{\delta})<0]$, the share of plausible conditions in which the design misses the specification, by Monte Carlo sampling of the cheap surrogate. It targets physics-model uncertainty ($\boldsymbol{\theta}$ from WP1), the fabrication spread measured on test structures, bias drift and surrogate error; confirmed counterexamples are labelled by mechanism (tunnelling, edge breakdown, efficiency loss) and fed back to the designer. The final 2--3 designs are checked across 250--295\,K for their maximum operating temperature. Reusing the surrogate keeps the challenger cheap.
 \emph{D2:} trained graph surrogate (validated on held-out geometries) and a robust Pareto front with uncertainty bands. \emph{D3:} robustness report per design (worst-case $\rho$, $P_\mathrm{fail}$) and a failure-mechanism catalogue.
 
-\textbf{WP3 -- Explain, validate and deliver (M8--12).} The graph surrogate shows \emph{where} in the device efficiency is gained and noise generated (field and generation maps, node-level attributions). SHAP sensitivity analysis and symbolic regression then give compact design rules, which Dr. Yi will check against device physics. \emph{Independent validation:} the shortlisted designs and established reference designs~\cn{3--5} are re-simulated blind at the highest fidelity, using settings the AI never saw. \emph{Experimental validation:} Si avalanche test diodes with the top designs' multiplication and charge-sheet doping are fabricated in the HWU cleanroom (8 weeks) and their measured breakdown and gain are compared with predictions. We release the framework and dataset and write a fabrication roadmap with the IQN Hub.
+\textbf{WP3 -- Explain, validate and deliver (M8--12).} The graph surrogate shows \emph{where} in the device efficiency is gained and noise generated (field and generation maps, node-level attributions). SHAP sensitivity analysis and symbolic regression then give compact design rules, which Dr.~Yi will check against device physics. \emph{Independent validation:} the shortlisted designs and established reference designs~\cn{3--5} are re-simulated blind at the highest fidelity, using settings the AI never saw. \emph{Experimental validation:} Si avalanche test diodes with the top designs' multiplication and charge-sheet doping are fabricated in the HWU cleanroom (6 of 8 booked weeks) and their measured breakdown and gain are compared with predictions. We release the framework and dataset and write a fabrication roadmap with the IQN Hub.
 \emph{D4:} design rules, test-diode data, open toolkit and GeSPAD-Bench, and fabrication roadmap.
 
-\textbf{Success criteria (12 months).} (a) At least one design with worst-case $\rho\ge0$ over $\Delta$ for $\eta^*\geq$\,50\%, $D^*\geq$\,1000 counts/s at 230\,K, confirmed by blind 3D TCAD. (b) The designer reaches reference-design performance with at least 5$\times$ fewer high-fidelity runs than Latin-hypercube sampling. (c) The challenger's falsification search finds planted failures with at least 5$\times$ fewer TCAD runs than random search. (d) At least three validated design rules.
+\textbf{Success criteria (12 months).} (a) At least one design with worst-case $\rho\ge0$ over $\Delta$ for $\eta^*\geq$\,50\%, $D^*\geq$\,1000 counts/s at 230\,K, confirmed by blind 3D TCAD. (b) The designer matches reference designs with $\geq$5$\times$ fewer high-fidelity runs than Latin-hypercube sampling. (c) The challenger finds planted failures with $\geq$5$\times$ fewer TCAD runs than random search. (d) At least three validated design rules.
 
 \subsection{Feasibility, prior work and environment}
 \Xin{} (EPSRC QT Fellow; Ge-on-Si SPADs~\cn{8}, avalanche models~\cn{11}) works in Prof.\ Buller's group at IPaQS, which leads the IQN Hub; \Cheng{} (RoboSafe lab) brings uncertainty-aware assessment~\cn{6}, falsification~\cn{7} and explainable AI~\cn{12}. \textbf{Preliminary work:} the team's Silvaco ATLAS workflow for waveguide Ge/Si APDs reproduces published devices (breakdown within 7\%) and showed, by manual sweeps, that $\pm$20\,nm in the charge-layer width shifts breakdown by up to 8\,V; AI-GeSPAD replaces such slow one-parameter-at-a-time studies. It also builds on HWU's TCAD models~\cn{16}, measured datasets~\cn{4,8} and falsification code~\cn{7}; the EPS cleanroom and National Robotarium complete the environment. A full-time PDRA (device simulation and machine learning), co-supervised by both leads, does most of the work on a dedicated project GPU workstation; fortnightly joint meetings of the leads and PDRA keep AI and device physics integrated; IQN Hub reviews at M6 and M12 add external checks.
@@ -135,11 +135,11 @@ Each shortlisted design $\mathbf{x}^*$ is treated as a system under test~\cn{7}.
 \end{tabularx}
 
 \subsection{From outputs to outcomes, and legacy}
-\textbf{Within 12 months:} a robustness-verified design shortlist, design rules, test-diode validation data, an open framework and dataset, and two papers (D2, D3). \textbf{Next 1--3 years:} fabrication and characterisation of complete waveguide SPADs from the top designs in HWU's EPS cleanroom. This will be proposed to the next \lnk{https://www.ukri.org/opportunity/nqs-mission-2-components-systems-and-architectures/}{UKRI Quantum Missions call}. \textbf{Legacy:} the toolkit and GeSPAD-Bench stay open (Zenodo DOI) and will be reused in the team's eSWIR APD work~\cn{10}; the device-agnostic framework is offered to the detector community via the UKRI programme workshop, a leading international conference and the IQN Hub, within a lasting IPaQS--Robotics collaboration. We also report the data and compute needs of AI-enabled device design (simulation counts, GPU hours, dataset size) to UKRI in a short note at the programme workshop.
+\textbf{Within 12 months:} a robustness-verified design shortlist, design rules, test-diode validation data, an open framework and dataset, and two papers (D2, D3). \textbf{Next 1--3 years:} fabrication and characterisation of complete waveguide SPADs from the top designs in HWU's EPS cleanroom. This will be proposed to the next \lnk{https://www.ukri.org/opportunity/nqs-mission-2-components-systems-and-architectures/}{UKRI Quantum Missions call}. \textbf{Beneficiaries:} UK detector and quantum-network companies working with Dr.~Yi (Toshiba, Photon Force, Phlux, KETS) through his KTP and Innovate UK links, and the IQN Hub testbeds. \textbf{Legacy:} the toolkit and GeSPAD-Bench stay open (Zenodo DOI) and will be reused in the team's eSWIR APD work~\cn{10}; the device-agnostic framework is offered to the detector community via the UKRI programme workshop, a leading international conference and the IQN Hub, within a lasting IPaQS--Robotics collaboration. We also report the data and compute needs of AI-enabled device design (simulation counts, GPU hours, dataset size) to UKRI at the programme workshop.
 
 % ---------------- References (count within 4 pages) ----------------
 \vspace{2pt}\hrule\vspace{2pt}
-{\scriptsize \textbf{References} \tbc{[verify all]}
+{\scriptsize \textbf{References} 
 [1] DSIT, \emph{National Quantum Strategy} (2023); Quantum Missions (2023).
 [2] Saalbach, Fleming, Yi, Buller, \emph{Adv. Phys. X} (2026).
 [3] Vines \emph{et al.}, \emph{Nat. Commun.} 10, 1086 (2019).
@@ -176,6 +176,8 @@ T1.1 & \cellcolor{taskorange} & \cellcolor{taskorange} &  &  &  &  &  &  &  &  &
 \hline
 T1.2 &  & \cellcolor{taskorange} & \cellcolor{taskorange} & \cellcolor{taskorange} &  &  &  &  &  &  &  &  \\
 \hline
+T1.3 & \cellcolor{taskorange} & \cellcolor{taskorange} & \cellcolor{taskorange} & \cellcolor{taskorange} &  &  &  &  &  &  &  &  \\
+\hline
 \rowcolor{wpblue}
 \multicolumn{13}{|l|}{\textbf{WP2: Graph surrogate, robust designer and challenger (Cheng Wang, Xin Yi, PDRA)}}\\
 \hline
@@ -184,6 +186,8 @@ T2.1 &  &  & \cellcolor{taskorange} & \cellcolor{taskorange} & \cellcolor{taskor
 T2.2 &  &  &  &  & \cellcolor{taskorange} & \cellcolor{taskorange} & \cellcolor{taskorange} & \cellcolor{taskorange} & \cellcolor{taskorange} &  &  &  \\
 \hline
 T2.3 &  &  &  &  &  &  & \cellcolor{taskorange} & \cellcolor{taskorange} & \cellcolor{taskorange} & \cellcolor{taskorange} &  &  \\
+\hline
+T2.4 &  &  &  &  & \cellcolor{taskorange} & \cellcolor{taskorange} & \cellcolor{taskorange} & \cellcolor{taskorange} &  &  &  &  \\
 \hline
 \rowcolor{wpblue}
 \multicolumn{13}{|l|}{\textbf{WP3: Explain, validate and deliver (Xin Yi, Cheng Wang, PDRA)}}\\
@@ -209,9 +213,11 @@ Deliverables: &  &  &  & D1 &  &  &  &  & D2 & D3 &  & D4 \\
 \noindent\textbf{Tasks:}\\[2pt]
 \begin{tabularx}{\textwidth}{|>{\columncolor{taskorange}}p{2.3cm}|X|}
 \hline
-T1.1: & Parameterised device template and automated 2D/3D Silvaco TCAD pipeline on the project workstation \\
+T1.1: & Device template and automated 2D/3D Silvaco TCAD pipeline on the project workstation \\
 \hline
-T1.2: & Benchmark against published APDs; Bayesian calibration to measured HWU SPADs; posterior defines $\Delta$ \\
+T1.2: & Benchmark on published APDs; Bayesian calibration to HWU SPADs; posterior defines $\Delta$ \\
+\hline
+T1.3: & Technician: breakdown, gain and DCR of existing HWU SPADs at 230--295\,K \\
 \hline
 T2.1: & Graph surrogate on the TCAD mesh, with ensemble uncertainty \\
 \hline
@@ -219,11 +225,13 @@ T2.2: & Robust multi-objective Bayesian optimisation of SPDE and DCR at 230\,K \
 \hline
 T2.3: & Challenger: falsification over $\Delta$ on the surrogate, TCAD confirmation of the top counterexamples, feedback to the designer; 250--295\,K check of the final designs \\
 \hline
+T2.4: & Technician: test structures for fabrication spread (2 weeks); AI-selected measurements \\
+\hline
 T3.1: & Field attribution, SHAP and symbolic regression to extract physical design rules \\
 \hline
 T3.2: & Blind high-fidelity 3D validation of shortlisted and reference designs \\
 \hline
-T3.3: & Fabrication and measurement of Si avalanche test diodes for final experimental validation \\
+T3.3: & Technician: Si avalanche test diodes (6 cleanroom weeks), fabrication and measurement \\
 \hline
 T3.4: & Open release (toolkit, GeSPAD-Bench dataset), and fabrication roadmap\\
 \hline
@@ -240,7 +248,7 @@ MS2 (M6): & Graph surrogate validated on held-out designs; IQN Hub review \\
 \hline
 MS3 (M9): & Robust SPDE--DCR Pareto front mapped at 230\,K \\
 \hline
-MS4 (M10): & Shortlisted designs verified by the challenger (worst-case $\rho$, $P_\mathrm{fail}$; maximum operating temperature of the final designs) \\
+MS4 (M10): & Shortlisted designs verified by the challenger (worst-case $\rho$, $P_\mathrm{fail}$, maximum temperature) \\
 \hline
 MS5 (M12): & Design rules validated blind and against test diodes; open toolkit and dataset released; final IQN Hub review \\
 \hline
